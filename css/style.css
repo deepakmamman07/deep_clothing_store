@@ -38,6 +38,7 @@
   padding: 0.5em 1.4em;
   min-width: 200px;
   min-height: 44px;
+  margin-bottom: 20px;
   font-size: var(--size, 1.5rem);
   font-weight: 500;
   transition: 0.8s;
@@ -118,7 +119,7 @@ a {
     text-decoration: none !important; }
 
 .hero {
-  height: 15vh;
+  height: 20vh;
   width: 100%;
   background-size: cover;
   background-position: center center;
@@ -608,9 +609,11 @@ a {
     align-items: center;
     flex-direction: column;
     width: 60%;
-}
+    padding: 40px;
+  }
 .hero-men-collection{
   background-color: #000;
+
 }
 
 
@@ -628,6 +631,7 @@ a {
 .content-2 p{
   font-size: 45px;
 }
+
 }
 
 @media (max-width: 992px){
@@ -641,6 +645,7 @@ a {
   padding: 0px 50px;
   font-size: 35px;
 }
+
 .hero-img-2{
   width: 100%;
 }
@@ -650,6 +655,9 @@ width: 100%;
 .para-btn{
   width: 100%;
 }
+.hero-men-collection{
+   flex-direction: column;
+}
 
 }
 
@@ -658,6 +666,7 @@ width: 100%;
     font-size: 120px;
     height: 50vh;
   }
+  
 }
 
 @media (max-width: 480px) {
