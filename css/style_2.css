@@ -113,7 +113,7 @@
 }
 
 .nc-card:hover .background-image {
-  filter: saturate(1.95) brightness(1.05);
+  filter: saturate(0.95);
   inset:1;
 }
 .nc-card .background-image {
