@@ -99,3 +99,66 @@ gsap.utils.toArray("section, .content-container, .content-2").forEach((el) => {
 });
 
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Set background images
+  document.querySelectorAll('.nc-card[data-bg]').forEach((el) => {
+    const url = el.getAttribute('data-bg') || '';
+    el.style.setProperty('--nc-bg', `url("${url}")`);
+  });
+
+  // Check GSAP
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    console.warn('GSAP or ScrollTrigger not loaded.');
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll('.new-collection .nc-card');
+
+  // Animate only when section scrolls into view
+  ScrollTrigger.create({
+    trigger: ".new-collection",
+    start: "top 85%",   // adjust how early animation starts
+    once: true,         // run only once
+    onEnter: () => {
+      gsap.from(cards, {
+        duration: 0.9,
+        y: 30,
+        opacity: 0,
+        stagger: 0.12,
+        ease: "power3.out"
+      });
+    }
+  });
+
+  // Optional: slight hover tilt
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const tx = (e.clientX - r.left) / r.width - 0.5;
+      const ty = (e.clientY - r.top) / r.height - 0.5;
+      gsap.to(card, { 
+        duration: 0.5, 
+        rotateY: tx * 5, 
+        rotateX: -ty * 5,
+        ease: 'power3.out'
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { duration: 0.6, rotateY: 0, rotateX: 0, ease: 'power2.out' });
+    });
+  });
+
+  // CTA gentle pulse
+  const cta = document.querySelector('.nc-cta');
+  if (cta) {
+    gsap.to(cta, { scale: 0.98, duration: 1.6, yoyo: true, repeat: -1, ease: "sine.inOut", opacity: 0.98 });
+  }
+});
+
+
+
+
