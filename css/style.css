@@ -554,6 +554,10 @@ a {
   display: inline-block;
 }
 
+.light h1{
+  margin: 0px;
+}
+
 .light-text video {
   position: absolute;
   top: 50%;
